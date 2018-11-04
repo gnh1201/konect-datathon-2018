@@ -30,8 +30,8 @@ select
     when indays_dod <= 365 then 365
     else null end) as death,
   (case when indays_dod < 7 then 1 else 0 end) as death_7,
-  (case when (indays_dod >= 7 and indays_dod < 28) then 1 else 0 end) as death_28,
-  (case when (indays_dod >= 28 and indays_dod < 365) then 1 else 0 end) as death_365
+  (case when indays_dod < 28 then 1 else 0 end) as death_28,
+  (case when indays_dod < 365 then 1 else 0 end) as death_365
 from
   `datathon-korea-2018.team_7.indays_adminssions` a,
   ( select
